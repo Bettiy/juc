@@ -29,12 +29,8 @@ public class Demo2 {
     }
 
     private static void demo() {
-        CompletableFuture.runAsync(() -> {
-            System.out.println(Thread.currentThread().getName());
-        });
-        CompletableFuture.runAsync(() -> {
-            System.out.println(Thread.currentThread().getName());
-        }, POOL);
+        CompletableFuture.runAsync(() -> System.out.println(Thread.currentThread().getName()));
+        CompletableFuture.runAsync(() -> System.out.println(Thread.currentThread().getName()), POOL);
         CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread().getName());
             return 1024;
