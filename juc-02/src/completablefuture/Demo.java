@@ -5,6 +5,20 @@ import java.util.concurrent.*;
 public class Demo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int i = 1 / 0;
+            return 110;
+        });
+        // System.out.println("future.get() = " + future.get(2, TimeUnit.SECONDS));
+        System.out.println("future.join() = " + future.join());
+    }
+
+    private static void extracted() throws InterruptedException, ExecutionException, TimeoutException {
         long start = System.currentTimeMillis();
         ExecutorService pool = Executors.newCachedThreadPool();
         FutureTask<Integer> future = new FutureTask<>(()-> {

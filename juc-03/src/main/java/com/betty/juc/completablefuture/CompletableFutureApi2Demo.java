@@ -1,4 +1,4 @@
-package com.betty.juc.juc01;
+package com.betty.juc.completablefuture;
 
 import java.util.concurrent.*;
 
